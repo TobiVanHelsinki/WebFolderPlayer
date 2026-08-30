@@ -24,6 +24,20 @@
     }
     return $files;
   }
+  function compareTreePaths($a, $b) {
+    $segA = explode('/', $a);
+    $segB = explode('/', $b);
+    $n = min(count($segA), count($segB));
+    for ($i = 0; $i < $n; $i++)
+    {
+      $aIsFile = ($i === count($segA) - 1);
+      $bIsFile = ($i === count($segB) - 1);
+      if ($aIsFile !== $bIsFile) return $aIsFile ? 1 : -1;
+      $cmp = strcasecmp($segA[$i], $segB[$i]);
+      if ($cmp !== 0) return $cmp;
+    }
+    return count($segA) <=> count($segB);
+  }
   function isHiddenDir($dir, $baseDir) {
     $dir  = rtrim($dir, '/');
     $base = rtrim($baseDir, '/');
@@ -53,7 +67,7 @@
   $files        = array_values(array_diff($allFiles, array('.', '..')));
   foreach ($files as $i => $f)
     $files[$i] = substr($f, 8, 999);
-  sort($files, SORT_STRING | SORT_FLAG_CASE);
+  usort($files, 'compareTreePaths');
   $hiddenMap = [];
   foreach ($files as $file)
     $hiddenMap[$file] = isHiddenDir('./' . $baseDirMedia . dirname($file), './' . $baseDirMedia);
@@ -178,6 +192,14 @@
         var content = btn.nextElementSibling;
         content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
     }
+
+    document.addEventListener('transitionend', function(e) {
+        if (e.propertyName !== 'max-height' || !e.target.classList.contains('content')) return;
+        var parent = e.target.parentElement ? e.target.parentElement.closest('.content') : null;
+        if (parent && parent.style.maxHeight && parent.style.maxHeight !== 'none') {
+            parent.style.maxHeight = parent.scrollHeight + 'px';
+        }
+    });
 
     function shuffleArray(arr) {
         for (var i = arr.length - 1; i > 0; i--) {

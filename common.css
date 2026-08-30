@@ -105,7 +105,7 @@ html, body {
   text-overflow: ellipsis;
   padding: 6px 14px;
   border-radius: 20px;
-  background-color: #221525;
+  background-color: color-mix(in srgb, var(--accent) 22%, #111);
   border-left: 3px solid var(--accent);
   color: #fff;
   font-size: 15px;
@@ -195,7 +195,7 @@ html, body {
 
 .videobtn.now-playing {
   border-left-color: var(--accent);
-  background-color: #251525;
+  background-color: color-mix(in srgb, var(--accent) 22%, #111);
   color: #fff;
 }
 
