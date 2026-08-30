@@ -1,0 +1,20 @@
+/* Copy this file to custom.css to customize this instance. */
+/* custom.css is gitignored, so it survives `git pull` untouched.   */
+/* It loads after every other stylesheet, so any rule in here wins. */
+
+:root {
+  --accent: #b06ab3;
+
+  /* Background is a single diagonal gradient behind the whole app;   */
+  /* sidebar/control-panel/video area are semi-transparent over it.  */
+  --bg-angle: 135deg;
+  --bg-from: #1a1a2e;
+  --bg-to: #16213e;
+}
+
+/* Anything else is fair game too, e.g.: */
+/*
+.sidebar {
+  width: 300px;
+}
+*/
