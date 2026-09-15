@@ -37,6 +37,24 @@ Supported file extensions: `mp4, webm, webp, mkv, jpeg, jpg, png, gif, bmp`.
    symlink to wherever your media library lives on that machine.
 3. Serve the folder with PHP (built-in server, Apache, nginx+php-fpm, ...).
 
+### Running manually with PHP's built-in server
+
+From the project root:
+
+```
+php -S 127.0.0.1:8000
+```
+
+Then open `http://127.0.0.1:8000/` in a browser. Stop the server with
+Ctrl+C. Use `0.0.0.0` instead of `127.0.0.1` to make it reachable from
+other devices on the network (e.g. a smart TV):
+
+```
+php -S 0.0.0.0:8000
+```
+
+Then open `http://<this machine's LAN IP>:8000/` from the other device.
+
 ## Customizing (per machine)
 
 Copy `custom.example.css` to `custom.css` and edit it. `custom.css` is

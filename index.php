@@ -76,6 +76,10 @@
     <div class="app">
 
         <div class="sidebar">
+            <div class="sidebar-pager">
+                <button class="pager-btn" type="button" onclick="scrollSidebar(-1)">&#9650;</button>
+                <button class="pager-btn" type="button" onclick="scrollSidebar(1)">&#9660;</button>
+            </div>
             <?php
       echo "<div class=\"contentroot\">";
       $openStack         = [];
@@ -185,6 +189,17 @@
         toastTimer = setTimeout(function() {
             nowPlayingToast.classList.remove('show');
         }, 5000);
+    }
+
+    if (/Silk|AFTB|AFTS|AFTA|AFTT|AFTM/.test(navigator.userAgent)) {
+        document.body.classList.add('tv-remote');
+    }
+
+    function scrollSidebar(direction) {
+        sidebar.scrollBy({
+            top: direction * sidebar.clientHeight * 0.6,
+            behavior: 'smooth'
+        });
     }
 
     function toggleCollapsible(btn) {

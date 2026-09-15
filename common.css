@@ -29,7 +29,41 @@ html, body {
   overflow-y: auto;
   background-color: rgba(26, 26, 26, 0.92);
   border-right: 1px solid #2a2a2a;
-  padding-top: 60px;
+}
+
+.sidebar-pager {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgba(20, 20, 20, 0.97);
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.pager-btn {
+  flex: 1;
+  font-size: 18px;
+  line-height: 1;
+  padding: 10px 0;
+  background-color: #333;
+  color: #ccc;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tv-remote .pager-btn {
+  font-size: 30px;
+  padding: 22px 0;
+}
+
+.pager-btn:hover,
+.pager-btn:focus {
+  background-color: var(--accent);
+  color: #fff;
+  outline: none;
 }
 
 .main-content {
